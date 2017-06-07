@@ -1,0 +1,45 @@
+{
+  "name": "brainstormer-web-frontend",
+  "version": "1.0.0",
+  "description": "Web frontend for Brainstormer",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dszopa/brainstormer-web-frontend.git"
+  },
+  "author": "Daniel Szopa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dszopa/brainstormer-web-frontend/issues"
+  },
+  "homepage": "https://github.com/dszopa/brainstormer-web-frontend#readme",
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-core": "^6.17.0",
+    "babel-preset-es2015": "^6.16.0",
+    "eslint": "^3.7.0",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-json": "^1.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.3.0",
+    "mocha": "^3.1.2",
+    "chai": "^3.5.0"
+  },
+  "dependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-1": "^6.13.0",
+    "serve-favicon": "^2.3.2",
+    "express": "^4.14.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-middleware": "^1.8.2"
+  }
+}
