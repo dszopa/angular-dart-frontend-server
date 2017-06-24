@@ -1,38 +1,26 @@
 @Tags(const ['aot'])
 @TestOn('browser')
-import 'dart:async';
-
 import 'package:angular2/angular2.dart';
 import 'package:angular_test/angular_test.dart';
-import 'package:pageloader/objects.dart';
 import 'package:test/test.dart';
-
 import 'package:frontend/app_component.dart';
-
-NgTestFixture<AppComponent> fixture;
-AppPO appPO;
-
 @AngularEntrypoint()
 void main() {
   final testBed = new NgTestBed<AppComponent>();
-
+  NgTestFixture<AppComponent> fixture;
   setUp(() async {
     fixture = await testBed.create();
-    appPO = await fixture.resolvePageObject(AppPO);
   });
-
   tearDown(disposeAnyRunningTest);
-
-  test('title', () async {
-    expect(await appPO.title, 'My First AngularDart App');
+  test('Default greeting', () {
+    expect(fixture.text, 'Hello Angular');
   });
-
-  // Testing info: https://webdev.dartlang.org/angular/guide/testing
-}
-
-class AppPO {
-  @ByTagName('h1')
-  PageLoaderElement _title;
-
-  Future<String> get title => _title.visibleText;
+  test('Greet world', () async {
+    await fixture.update((c) => c.name = 'World');
+    expect(fixture.text, 'Hello World');
+  });
+  test('Greet world HTML', () {
+    final html = fixture.rootElement.innerHtml;
+    expect(html, '<h1>Hello Angular</h1>');
+  });
 }
