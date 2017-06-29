@@ -1,104 +1,43 @@
 import 'package:angular2/angular2.dart';
+import 'package:angular2/router.dart';
 
-class Hero {
-  final int id;
-  String name;
-
-  Hero(this.id, this.name);
-}
-
-final mockHeroes = <Hero>[
-  new Hero(11, 'Mr. Nice'),
-  new Hero(12, 'Narco'),
-  new Hero(13, 'Bombasto'),
-  new Hero(14, 'Celeritas'),
-  new Hero(15, 'Magneta'),
-  new Hero(16, 'RubberMan'),
-  new Hero(17, 'Dynama'),
-  new Hero(18, 'Dr IQ'),
-  new Hero(19, 'Magma'),
-  new Hero(20, 'Tornado')
-];
+import 'src/hero_service.dart';
+import 'src/heroes_component.dart';
+import 'src/dashboard_component.dart';
 
 @Component(
   selector: 'my-app',
   template: '''
-    <h1>{{title}}</h1>
-    <h2>My Heroes</h2>
-    <ul class="heroes">
-        <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero == selectedHero">
-            <span class="badge">{{hero.id}}</span> {{hero.name}}
-        </li>
-    </ul>
-    <div *ngIf="selectedHero != null">
-        <h2>{{selectedHero.name}} details!</h2>
-        <div>
-            <label>id: </label>{{selectedHero.id}}
-        </div>
-        <div>
-            <label>name: </label>
-            <input [(ngModel)]="selectedHero.name" placeholder="name">
-        </div>
-    </div>
-    ''',
-  styles: const [
-    '''
-    .selected {
-      background-color: #CFD8DC !important;
-      color: white;
-    }
-    .heroes {
-      margin: 0 0 2em 0;
-      list-style-type: none;
-      padding: 0;
-      width: 15em;
-    }
-    .heroes li {
-      cursor: pointer;
-      position: relative;
-      left: 0;
-      background-color: #EEE;
-      margin: .5em;
-      padding: .3em 0em;
-      height: 1.6em;
-      border-radius: 4px;
-    }
-    .heroes li.selected:hover {
-      color: white;
-    }
-    .heroes li:hover {
-      color: #607D8B;
-      background-color: #EEE;
-      left: .1em;
-    }
-    .heroes .text {
-      position: relative;
-      top: -3px;
-    }
-    .heroes .badge {
-      display: inline-block;
-      font-size: small;
-      color: white;
-      padding: 0.8em 0.7em 0em 0.7em;
-      background-color: #607D8B;
-      line-height: 1em;
-      position: relative;
-      left: -1px;
-      top: -4px;
-      height: 1.8em;
-      margin-right: .8em;
-      border-radius: 4px 0px 0px 4px;
-    }
-  '''
+      <h1>{{title}}</h1>
+      <nav>
+          <a [routerLink]="['Dashboard']">Dashboard</a>
+          <a [routerLink]="['Heroes']">Heroes</a>
+      </nav>
+      <router-outlet></router-outlet>
+  ''',
+  directives: const [
+    ROUTER_DIRECTIVES,
   ],
-  directives: const [COMMON_DIRECTIVES],
+  providers: const [
+    HeroService,
+    ROUTER_PROVIDERS,
+  ],
 )
+@RouteConfig(const [
+  const Route(
+      path: '/heroes',
+      name: 'Heroes',
+      component: HeroesComponent
+  ),
+  const Route(
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: DashboardComponent,
+    useAsDefault: true
+  ),
+])
 class AppComponent {
-  final title = 'Tour of Heroes';
-  var selectedHero;
-  final List<Hero> heroes = mockHeroes;
 
-  void onSelect(Hero hero) {
-    selectedHero = hero;
-  }
+  // Variables
+  String title = 'Tour of Heroes';
 }
