@@ -4,6 +4,7 @@ import 'package:angular2/router.dart';
 import 'src/hero_service.dart';
 import 'src/heroes_component.dart';
 import 'src/dashboard_component.dart';
+import 'src/hero_detail_component.dart';
 
 @Component(
   selector: 'my-app',
@@ -15,6 +16,7 @@ import 'src/dashboard_component.dart';
       </nav>
       <router-outlet></router-outlet>
   ''',
+  styleUrls: const ['app_component.css'],
   directives: const [
     ROUTER_DIRECTIVES,
   ],
@@ -34,6 +36,11 @@ import 'src/dashboard_component.dart';
     name: 'Dashboard',
     component: DashboardComponent,
     useAsDefault: true
+  ),
+  const Route(
+    path: '/detail/:id',
+    name: 'HeroDetail',
+    component: HeroDetailComponent
   ),
 ])
 class AppComponent {
