@@ -1,5 +1,5 @@
 .idea
-brainstormer-web-frontend.iml
+*.iml
 
 node_modules
 

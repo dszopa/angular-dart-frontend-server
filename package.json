@@ -1,7 +1,7 @@
 {
-  "name": "brainstormer-web-frontend",
+  "name": "angular-dart-frontend-server",
   "version": "1.0.0",
-  "description": "Web frontend for Brainstormer",
+  "description": "A server made to develop & serve the results of an angular dart project",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dszopa/brainstormer-web-frontend.git"
+    "url": "git+https://github.com/dszopa/angular-dart-frontend-server.git"
   },
   "author": "Daniel Szopa",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dszopa/brainstormer-web-frontend/issues"
+    "url": "https://github.com/dszopa/angular-dart-frontend-server/issues"
   },
-  "homepage": "https://github.com/dszopa/brainstormer-web-frontend#readme",
+  "homepage": "https://github.com/dszopa/angular-dart-frontend-server#readme",
   "devDependencies": {
     "babel-cli": "^6.16.0",
     "babel-core": "^6.17.0",
